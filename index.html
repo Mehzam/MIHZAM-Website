@@ -323,6 +323,14 @@ body.ar .flow-arrow{
       padding:34px 0 44px; display:flex; justify-content:space-between; gap:18px;
       color:#77766f; font-size:.9rem;
     }
+    .social-x{
+  color:#c9a85d;
+  text-decoration:none;
+  font-weight:600;
+}
+.social-x:hover{
+  color:#ffffff;
+}
     [data-ar]{display:none}
     body.ar{direction:rtl}
     body.ar [data-en]{display:none}
@@ -549,6 +557,7 @@ oninput="this.setCustomValidity('')"
     <footer>
       <span>© 2026 MIHZAM. All rights reserved.</span>
       <span><span data-en>Official website coming soon.</span><span data-ar>الموقع الرسمي قريبًا.</span></span>
+      <a class="social-x" href="https://x.com/MIHZAM12" target="_blank" rel="noopener noreferrer">X · @MIHZAM12</a>
     </footer>
   </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -613,7 +622,23 @@ earlyForm.addEventListener('submit', async function(e){
     earlyMessage.classList.add('show');
     return;
   }
+try {
+  const { error: emailError } = await supabaseClient.functions.invoke(
+    'send-early-access-email',
+    {
+      body: {
+        email: email,
+        language: language
+      }
+    }
+  );
 
+  if (emailError) {
+    console.error('Confirmation email error:', emailError);
+  }
+} catch (emailError) {
+  console.error('Confirmation email failed:', emailError);
+}
   earlyMessage.textContent = language === 'ar'
     ? 'تم استلام طلبك للانضمام إلى قائمة الوصول المبكر لـ MIHZAM.'
     : 'Your MIHZAM early access request has been received.';
