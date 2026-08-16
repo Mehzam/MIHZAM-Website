@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MIHZAM — Engineering Better Investment Decisions." />
+  <meta name="theme-color" content="#0b0b0c" />
+  <title>MIHZAM | Investment Intelligence, Engineered.</title>
+  <style>
+    :root{
+      --bg:#09090b;
+      --panel:#111114;
+      --text:#f5f5f2;
+      --muted:#aaa9a2;
+      --gold:#c9a45f;
+      --line:rgba(201,164,95,.24);
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(201,164,95,.12), transparent 36%),
+        var(--bg);
+      min-height:100vh;
+    }
+    a{color:inherit}
+    .wrap{width:min(var(--max), calc(100% - 40px)); margin:auto}
+    header{
+      height:78px; display:flex; align-items:center; justify-content:space-between;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .brand{font-weight:800; letter-spacing:.24em; font-size:1rem}
+    .lang{
+      border:1px solid var(--line); background:transparent; color:var(--text);
+      border-radius:999px; padding:9px 14px; cursor:pointer;
+    }
+    main{padding:90px 0 54px}
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:9px;
+      color:var(--gold); font-size:.82rem; letter-spacing:.13em; text-transform:uppercase;
+      border:1px solid var(--line); border-radius:999px; padding:8px 12px;
+      background:rgba(201,164,95,.05);
+    }
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);
+      box-shadow:0 0 18px rgba(201,164,95,.9)}
+    h1{
+      max-width:920px; margin:28px 0 20px;
+      font-size:clamp(3rem, 8vw, 7rem); line-height:.94; letter-spacing:-.055em;
+    }
+    .gold{color:var(--gold)}
+    .lead{
+      max-width:720px; color:var(--muted); font-size:clamp(1.05rem, 2vw, 1.32rem);
+      line-height:1.75; margin-bottom:36px;
+    }
+    .actions{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:82px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-height:48px; padding:0 20px; border-radius:10px; text-decoration:none;
+      font-weight:700;
+    }
+    .primary{background:var(--gold); color:#15120c}
+    .primary{
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 28px rgba(201,164,95,.20);
+}
+    .secondary{border:1px solid rgba(255,255,255,.14); color:var(--text)}
+    .grid{
+      display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; margin:20px 0 84px;
+    }
+    .card{
+      min-height:150px; padding:24px; border:1px solid rgba(255,255,255,.08);
+      border-radius:16px; background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+    }
+    .card strong{display:block; color:var(--gold); font-size:1.1rem; margin-bottom:12px}
+    .card p{margin:0;color:var(--muted);line-height:1.65;font-size:.95rem}
+    .card{
+  transition:transform .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(201,164,95,.45);
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.045),
+    rgba(255,255,255,.018)
+  );
+}
+
+.card strong{
+  transition:color .25s ease;
+}
+
+.card:hover strong{
+  color:#e3bd70;
+}
+.vision{
+  position:relative;
+}
+
+.vision::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:72px;
+  height:1px;
+  background:var(--gold);
+  opacity:.75;
+}
+
+body.ar .vision::before{
+  left:auto;
+  right:0;
+}
+    .vision{
+      border-top:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      padding:56px 0; display:grid; grid-template-columns:1fr 1.3fr; gap:34px;
+      scroll-margin-top:90px;
+    }
+    .vision h2{margin:0; font-size:clamp(2rem, 4vw, 3.7rem); letter-spacing:-.04em}
+    .vision p{margin:0; color:var(--muted); font-size:1.12rem; line-height:1.8}
+    .vision p{
+  max-width:720px;
+}
+
+.decision-flow{
+  padding:76px 0 72px;
+  border-top:1px solid rgba(255,255,255,.08);
+  text-align:center;
+}
+
+.flow-title{
+  font-size:clamp(1.5rem, 3vw, 2.2rem);
+  font-weight:800;
+  letter-spacing:-.03em;
+  margin-bottom:34px;
+  color:var(--text);
+}
+
+.flow-steps{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.flow-step{
+  flex:1;
+  padding:22px 16px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.035),
+    rgba(255,255,255,.012)
+  );
+  color:var(--gold);
+  font-weight:700;
+}
+
+.flow-step{
+  transition:transform .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.flow-step:hover{
+  transform:translateY(-4px);
+  border-color:rgba(201,164,95,.45);
+  background:linear-gradient(
+    180deg,
+    rgba(201,164,95,.08),
+    rgba(255,255,255,.018)
+  );
+}
+
+.flow-arrow{
+  color:var(--gold);
+  font-size:1.35rem;
+  opacity:.65;
+}
+
+body.ar .flow-arrow{
+  transform:rotate(180deg);
+}
+
+@media(max-width:850px){
+  .flow-steps{
+    flex-direction:column;
+  }
+
+  .flow-step{
+    width:100%;
+  }
+
+  .flow-arrow{
+    transform:rotate(90deg);
+  }
+
+  body.ar .flow-arrow{
+    transform:rotate(90deg);
+  }
+}
+
+/* Early Access / Waiting List */
+.early-access{
+  padding:70px 72px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.early-access-inner{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:48px;
+  align-items:center;
+  padding:38px;
+  border:1px solid rgba(201,164,95,.28);
+  border-radius:18px;
+  background:linear-gradient(
+    135deg,
+    rgba(201,164,95,.07),
+    rgba(255,255,255,.018)
+  );
+}
+
+.early-label{
+  display:inline-block;
+  margin-bottom:14px;
+  color:var(--gold);
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+
+.early-access h2{
+  margin:0 0 14px;
+  font-size:clamp(1.7rem,3vw,2.5rem);
+  line-height:1.15;
+}
+
+.early-access p{
+  margin:0;
+  max-width:620px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.early-form{
+  display:flex;
+  gap:10px;
+}
+
+.early-form input{
+  flex:1;
+  min-width:0;
+  padding:15px 16px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:10px;
+  background:rgba(0,0,0,.25);
+  color:var(--text);
+  outline:none;
+}
+
+.early-form input:focus{
+  border-color:rgba(201,164,95,.65);
+}
+
+.early-form button{
+  padding:15px 20px;
+  border:0;
+  border-radius:10px;
+  background:var(--gold);
+  color:#090909;
+  font-weight:800;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.early-form button:hover{
+  transform:translateY(-2px);
+}
+
+.early-message{
+  display:none;
+  margin-top:14px;
+  color:var(--gold);
+  font-weight:700;
+}
+
+.early-message.show{
+  display:block;
+}
+
+@media(max-width:850px){
+  .early-access{
+    padding:52px 24px;
+  }
+
+  .early-access-inner{
+    grid-template-columns:1fr;
+    gap:28px;
+    padding:28px 22px;
+  }
+
+  .early-form{
+    flex-direction:column;
+  }
+
+  .early-form button{
+    width:100%;
+  }
+}
+    footer{
+      padding:34px 0 44px; display:flex; justify-content:space-between; gap:18px;
+      color:#77766f; font-size:.9rem;
+    }
+    .social-x{
+  color:#c9a85d;
+  text-decoration:none;
+  font-weight:600;
+}
+.social-x:hover{
+  color:#ffffff;
+}
+    [data-ar]{display:none}
+    body.ar{direction:rtl}
+    body.ar [data-en]{display:none}
+    body.ar [data-ar]{display:initial}
+    body.ar h1, body.ar .lead, body.ar .vision, body.ar .card{text-align:right}
+    @media(max-width:850px){
+      main{padding-top:62px}
+      .grid{grid-template-columns:1fr 1fr}
+      .vision{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .wrap{width:min(var(--max), calc(100% - 24px))}
+      header{height:66px}
+      .grid{grid-template-columns:1fr}
+      footer{flex-direction:column}
+      h1{font-size:3.35rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">MIHZAM</div>
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language">العربية</button>
+    </header>
+
+    <main>
+      <span class="eyebrow">
+        <span class="dot"></span>
+        <span data-en>Currently under development</span>
+        <span data-ar>قيد التطوير حاليًا</span>
+      </span>
+
+      <h1>
+        <span data-en>Investment Intelligence, <span class="gold">Engineered.</span></span>
+        <span data-ar>ذكاء استثماري <span class="gold">مصمم بمنهجية.</span></span>
+      </h1>
+
+      <p class="lead">
+        <span data-en>
+          MIHZAM is building an intelligent investment operating system designed to help
+          investors make disciplined, structured, and data-informed decisions.
+        </span>
+        <span data-ar>
+          تبني MIHZAM نظام تشغيل استثماري ذكي يساعد المستثمرين على اتخاذ قرارات منضبطة،
+          منظمة، ومدعومة بالبيانات.
+        </span>
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" href="#vision">
+          <span data-en>Discover the vision</span><span data-ar>اكتشف الرؤية</span>
+        </a>
+        <a class="btn secondary" href="mailto:info@mihzam.com">
+          <span data-en>info@mihzam.com</span><span data-ar>info@mihzam.com</span>
+        </a>
+      </div>
+
+      <section class="grid" id="principles" aria-label="MIHZAM principles">
+
+  <article class="card">
+    <strong>
+      <span data-en>Discipline</span>
+      <span data-ar>الانضباط</span>
+    </strong>
+    <p>
+      <span data-en>Process before impulse.</span>
+      <span data-ar>المنهج قبل الاندفاع.</span>
+    </p>
+  </article>
+
+  <article class="card">
+    <strong>
+      <span data-en>Structure</span>
+      <span data-ar>الهيكلة</span>
+    </strong>
+    <p>
+      <span data-en>Turn complexity into a clear decision framework.</span>
+      <span data-ar>تحويل التعقيد إلى إطار واضح لاتخاذ القرار.</span>
+    </p>
+  </article>
+
+  <article class="card">
+    <strong>
+      <span data-en>Understanding</span>
+      <span data-ar>الفهم</span>
+    </strong>
+    <p>
+      <span data-en>Data becomes useful only when it improves understanding.</span>
+      <span data-ar>تصبح البيانات ذات قيمة عندما تتحول إلى فهم.</span>
+    </p>
+  </article>
+
+  <article class="card">
+    <strong>
+      <span data-en>Risk First</span>
+      <span data-ar>المخاطر أولًا</span>
+    </strong>
+    <p>
+      <span data-en>Protect capital before pursuing return.</span>
+      <span data-ar>حماية رأس المال قبل السعي إلى العائد.</span>
+    </p>
+  </article>
+
+</section>
+
+<section class="decision-flow">
+
+  <div class="flow-title">
+    <span data-en>From Data to Decision Quality</span>
+    <span data-ar>من البيانات إلى جودة القرار</span>
+  </div>
+
+  <div class="flow-steps">
+
+    <div class="flow-step">
+      <span data-en>Market Data</span>
+      <span data-ar>بيانات السوق</span>
+    </div>
+
+    <span class="flow-arrow">→</span>
+
+    <div class="flow-step">
+      <span data-en>Risk Context</span>
+      <span data-ar>فهم المخاطر</span>
+    </div>
+
+    <span class="flow-arrow">→</span>
+
+    <div class="flow-step">
+      <span data-en>Structured Analysis</span>
+      <span data-ar>تحليل منظم</span>
+    </div>
+
+    <span class="flow-arrow">→</span>
+
+    <div class="flow-step">
+      <span data-en>Decision Support</span>
+      <span data-ar>دعم القرار</span>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="early-access" id="early-access">
+  <div class="early-access-inner">
+
+    <div class="early-access-copy">
+      <span class="early-label" data-en>EARLY ACCESS</span>
+      <span class="early-label" data-ar>وصول مبكر</span>
+
+      <h2>
+        <span data-en>Be among the first to experience MIHZAM.</span>
+        <span data-ar>كن من أوائل من يختبرون MIHZAM.</span>
+      </h2>
+
+      <p>
+        <span data-en>
+          Join the early access list and follow the development of a new
+          investment decision-support experience.
+        </span>
+        <span data-ar>
+          انضم إلى قائمة الوصول المبكر وتابع تطوير تجربة جديدة
+          لدعم جودة القرار الاستثماري.
+        </span>
+      </p>
+    </div>
+
+    <form class="early-form" id="earlyAccessForm">
+      <input
+        type="email"
+        name="email"
+        placeholder="Email address"
+        aria-label="Email address"
+        oninvalid="this.setCustomValidity(document.body.classList.contains('ar') ? 'يرجى إدخال بريدك الإلكتروني.' : 'Please enter your email address.')"
+oninput="this.setCustomValidity('')"
+        required
+      >
+      <button type="submit">
+        <span data-en>Join Early Access</span>
+        <span data-ar>انضم للوصول المبكر</span>
+      </button>
+    </form>
+    <div class="early-message" id="earlyMessage" aria-live="polite">
+  <span data-en>You're on the MIHZAM early access list.</span>
+  <span data-ar>تم تسجيلك في قائمة الوصول المبكر لـ MIHZAM.</span>
+</div>
+
+  </div>
+</section>
+<section class="vision" id="vision">
+
+  <h2>
+    <span data-en>
+      Designed in Saudi Arabia.<br>
+      <span class="gold">Built for disciplined investors.</span>
+    </span>
+
+    <span data-ar>
+      صُمم في المملكة العربية السعودية.<br>
+      <span class="gold">صُمم للمستثمر المنضبط.</span>
+    </span>
+  </h2>
+
+  <p>
+    <span data-en>
+      Our vision is to build a trusted investment decision-support operating
+      system that transforms scattered market data into structured understanding,
+      clearer risk awareness, and higher-quality decisions — while keeping the
+      final decision with the investor.
+    </span>
+
+    <span data-ar>
+      رؤيتنا هي بناء نظام تشغيل موثوق لدعم القرار الاستثماري،
+      يحول بيانات السوق المتفرقة إلى فهم منظم، ووعي أوضح بالمخاطر،
+      وقرارات أعلى جودة — مع بقاء القرار النهائي بيد المستثمر.
+    </span>
+  </p>
+
+</section>
+    </main>
+
+    <footer>
+      <span>© 2026 MIHZAM. All rights reserved.</span>
+      <span><span data-en>Official website coming soon.</span><span data-ar>الموقع الرسمي قريبًا.</span></span>
+      <a class="social-x" href="https://x.com/MIHZAM12" target="_blank" rel="noopener noreferrer">X · @MIHZAM12</a>
+    </footer>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const btn = document.getElementById('langBtn');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('ar');
+      const isArabic = document.body.classList.contains('ar');
+      document.documentElement.lang = isArabic ? 'ar' : 'en';
+      document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+      btn.textContent = isArabic ? 'English' : 'العربية';
+    });
+    const earlyForm = document.getElementById('earlyAccessForm');
+const earlyMessage = document.getElementById('earlyMessage');
+const SUPABASE_URL = 'https://fhvhwecuyzgxgdpypsls.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_JS1pTaU-b2MYjv6Ke1WR_w_-7SomoM9';
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+earlyForm.addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  const emailInput = earlyForm.querySelector('input[name="email"]');
+
+  if (!emailInput.checkValidity()) {
+    emailInput.reportValidity();
+    return;
+  }
+
+  const email = emailInput.value.trim().toLowerCase();
+  const language = document.body.classList.contains('ar') ? 'ar' : 'en';
+  const submitButton = earlyForm.querySelector('button[type="submit"]');
+
+  submitButton.disabled = true;
+
+  const { error } = await supabaseClient
+    .from('early_access')
+    .insert([
+      {
+        email: email,
+        source: 'website',
+        language: language
+      }
+    ]);
+
+  submitButton.disabled = false;
+
+  if (error) {
+    if (error.code === '23505') {
+      earlyMessage.textContent = language === 'ar'
+        ? 'هذا البريد مسجل بالفعل في قائمة الوصول المبكر.'
+        : 'This email is already registered for early access.';
+    } else {
+      earlyMessage.textContent = language === 'ar'
+        ? 'تعذر إكمال التسجيل الآن. يرجى المحاولة مرة أخرى.'
+        : 'We could not complete your registration. Please try again.';
+    }
+
+    earlyMessage.classList.add('show');
+    return;
+  }
+try {
+  const { error: emailError } = await supabaseClient.functions.invoke(
+    'send-early-access-email',
+    {
+      body: {
+        email: email,
+        language: language
+      }
+    }
+  );
+
+  if (emailError) {
+    console.error('Confirmation email error:', emailError);
+  }
+} catch (emailError) {
+  console.error('Confirmation email failed:', emailError);
+}
+  earlyMessage.textContent = language === 'ar'
+    ? 'تم استلام طلبك للانضمام إلى قائمة الوصول المبكر لـ MIHZAM.'
+    : 'Your MIHZAM early access request has been received.';
+
+  earlyMessage.classList.add('show');
+  earlyForm.reset();
+});
+  </script>
+</body>
+</html>
