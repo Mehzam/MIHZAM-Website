@@ -35,11 +35,16 @@
       border-bottom:1px solid rgba(255,255,255,.06);
     }
     .brand{font-weight:800; letter-spacing:.24em; font-size:1rem}
+    body.ar .brand{
+  font-size:1.35rem;
+  letter-spacing:0;
+  font-weight:800;
+}
     .lang{
       border:1px solid var(--line); background:transparent; color:var(--text);
       border-radius:999px; padding:9px 14px; cursor:pointer;
     }
-    main{padding:70px 0 44px}
+    main{padding:56px 0 36px}
     .eyebrow{
       display:inline-flex; align-items:center; gap:9px;
       color:var(--gold); font-size:.82rem; letter-spacing:.13em; text-transform:uppercase;
@@ -48,15 +53,15 @@
     }
     .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);
       box-shadow:0 0 18px rgba(201,164,95,.9)}
-    h1{
-      max-width:920px; margin:28px 0 20px;
-      font-size:clamp(2.7rem, 6vw, 5.4rem);
-    }
+    
     .gold{color:var(--gold)}
     .lead{
-      max-width:720px; color:var(--muted); font-size:clamp(1.05rem, 2vw, 1.32rem);
-      line-height:1.75; margin-bottom:36px;
-    }
+  max-width:720px;
+  color:var(--muted);
+  font-size:clamp(1rem, 1.6vw, 1.2rem);
+  line-height:1.7;
+  margin-bottom:28px;
+}
     .actions{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:34px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -220,7 +225,7 @@ body.ar .flow-arrow{
 .early-access-inner{
   display:grid;
   grid-template-columns:1.15fr .85fr;
-  gap:48px;
+  gap:28px;
   align-items:center;
   padding:38px;
   border:1px solid rgba(201,164,95,.28);
@@ -245,6 +250,24 @@ body.ar .flow-arrow{
   margin:0 0 14px;
   font-size:clamp(1.7rem,3vw,2.5rem);
   line-height:1.15;
+}
+body.ar .early-access{
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+}
+
+body.ar .early-copy{
+  max-width:620px;
+}
+
+body.ar .early-copy h2{
+  font-size:clamp(2rem, 3.2vw, 3.15rem);
+  line-height:1.25;
+}
+
+body.ar .early-form{
+  justify-content:flex-start;
+  align-items:center;
 }
 
 .early-access p{
@@ -353,7 +376,7 @@ body.ar .flow-arrow{
 <body>
   <div class="wrap">
     <header>
-      <div class="brand">MIHZAM</div>
+      <div class="brand"><span data-en>MIHZAM</span><span data-ar>مِحْزَم</span></div>
       <button class="lang" id="langBtn" type="button" aria-label="Switch language">العربية</button>
     </header>
 
@@ -375,7 +398,7 @@ body.ar .flow-arrow{
           investors make disciplined, structured, and data-informed decisions.
         </span>
         <span data-ar>
-          تبني MIHZAM نظام تشغيل استثماري ذكي يساعد المستثمرين على اتخاذ قرارات منضبطة،
+          تبني مِحْزَم نظام تشغيل استثماري ذكي يساعد المستثمرين على اتخاذ قرارات منضبطة،
           منظمة، ومدعومة بالبيانات.
         </span>
       </p>
@@ -485,7 +508,7 @@ body.ar .flow-arrow{
 
       <h2>
         <span data-en>Be among the first to experience MIHZAM.</span>
-        <span data-ar>كن من أوائل من يختبرون MIHZAM.</span>
+        <span data-ar>كن من أوائل من يختبرون مِحْزَم.</span>
       </h2>
 
       <p>
@@ -555,20 +578,23 @@ oninput="this.setCustomValidity('')"
     </main>
 
     <footer>
-      <span>© 2026 MIHZAM. All rights reserved.</span>
-      <span><span data-en>Official website coming soon.</span><span data-ar>الموقع الرسمي قريبًا.</span></span>
+      <span><span data-en>© 2026 MIHZAM. All rights reserved.</span><span data-ar>© 2026 مِحْزَم. جميع الحقوق محفوظة.</span></span>
+      <span><span data-en>MIHZAM OS — Coming Soon.</span><span data-ar>نظام مِحْزَم التشغيلي — قريبًا.</span></span>
       <a class="social-x" href="https://x.com/MIHZAM12" target="_blank" rel="noopener noreferrer">X · @MIHZAM12</a>
     </footer>
   </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const btn = document.getElementById('langBtn');
+    const emailInput = document.querySelector('#earlyAccessForm input[type="email"]');
     btn.addEventListener('click', () => {
       document.body.classList.toggle('ar');
       const isArabic = document.body.classList.contains('ar');
       document.documentElement.lang = isArabic ? 'ar' : 'en';
       document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
       btn.textContent = isArabic ? 'English' : 'العربية';
+      emailInput.placeholder = isArabic ? 'البريد الإلكتروني' : 'Email address';
+      emailInput.setAttribute('aria-label', isArabic ? 'البريد الإلكتروني' : 'Email address');
     });
     const earlyForm = document.getElementById('earlyAccessForm');
 const earlyMessage = document.getElementById('earlyMessage');
