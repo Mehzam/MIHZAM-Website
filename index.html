@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+  <style>
+  html:not(.lang-ready) body {
+    visibility: hidden;
+  }
+</style>
   <meta charset="UTF-8" />
+  <script>
+  const savedLang = localStorage.getItem("mihzamLang");
+  const urlLang = new URLSearchParams(window.location.search).get("lang");
+  const initialLang = urlLang || savedLang || "en";
+
+  document.documentElement.lang = initialLang;
+  document.documentElement.dir = initialLang === "ar" ? "rtl" : "ltr";
+
+  if (initialLang === "ar") {
+    document.documentElement.classList.add("ar");
+  }
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="MIHZAM — Engineering Better Investment Decisions." />
   <meta name="theme-color" content="#0b0b0c" />
@@ -40,10 +57,33 @@
   letter-spacing:0;
   font-weight:800;
 }
-    .lang{
-      border:1px solid var(--line); background:transparent; color:var(--text);
-      border-radius:999px; padding:9px 14px; cursor:pointer;
-    }
+    
+      .lang{
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--text);
+  border-radius:999px;
+  padding:9px 14px;
+  cursor:pointer;
+}
+
+.os-btn{
+  border:1px solid var(--gold);
+  background:rgba(201,164,95,.06);
+  color:var(--text);
+  border-radius:999px;
+  padding:9px 16px;
+  text-decoration:none;
+  font-weight:700;
+  letter-spacing:.04em;
+  transition:.2s ease;
+}
+
+.os-btn:hover{
+  background:rgba(201,164,95,.14);
+  border-color:var(--gold);
+}
+      
     main{padding:56px 0 36px}
     .eyebrow{
       display:inline-flex; align-items:center; gap:9px;
@@ -459,6 +499,7 @@ body.ar .early-form{
   <div class="wrap">
     <header>
       <div class="brand"><span data-en>MIHZAM</span><span data-ar>مِحْزَم</span></div>
+      <a class="os-btn" id="osBtn" href="login.html?lang=en" aria-label="MIHZAM OS">MIHZAM OS</a>
       <button class="lang" id="langBtn" type="button" aria-label="Switch language">العربية</button>
     </header>
 
@@ -668,10 +709,34 @@ oninput="this.setCustomValidity('')"
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const btn = document.getElementById('langBtn');
+    const osBtn = document.getElementById('osBtn');
     const emailInput = document.querySelector('#earlyAccessForm input[type="email"]');
+    const currentLang = localStorage.getItem('mihzamLang');
+
+if (currentLang === 'ar') {
+  document.body.classList.add('ar');
+  document.documentElement.lang = 'ar';
+  document.documentElement.dir = 'rtl';
+  btn.textContent = 'English';
+  osBtn.href = 'login.html?lang=ar';
+
+  if (emailInput) {
+    emailInput.placeholder = 'البريد الإلكتروني';
+    emailInput.setAttribute('aria-label', 'البريد الإلكتروني');
+  }
+}
+
+
+document.documentElement.classList.add("lang-ready");
+
+
     btn.addEventListener('click', () => {
-      document.body.classList.toggle('ar');
-      const isArabic = document.body.classList.contains('ar');
+    document.body.classList.toggle('ar');
+    const isArabic = document.body.classList.contains('ar');
+
+    localStorage.setItem('mihzamLang', isArabic ? 'ar' : 'en');
+    osBtn.href = isArabic ? 'login.html?lang=ar' : 'login.html?lang=en';
+      
       document.documentElement.lang = isArabic ? 'ar' : 'en';
       document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
       btn.textContent = isArabic ? 'English' : 'العربية';
