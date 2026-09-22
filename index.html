@@ -75,9 +75,10 @@
     }
     .brand{font-weight:800; letter-spacing:.24em; font-size:1rem}
     body.ar .brand{
-  font-size:1.35rem;
+  font-size:1.85rem;
   letter-spacing:0;
-  font-weight:800;
+  font-weight:700;
+  line-height:1.25;
 }
     
       .lang{
@@ -209,7 +210,7 @@ body.ar .vision::before{
 
 .flow-title{
   font-size:clamp(1.5rem, 3vw, 2.2rem);
-  font-weight:800;
+  font-weight:700;
   letter-spacing:-.03em;
   margin-bottom:34px;
   color:var(--text);
@@ -520,7 +521,7 @@ body.ar .early-form{
 <body>
   <div class="wrap">
     <header>
-      <div class="brand"><span data-en>MIHZAM</span><span data-ar>مِحْزَم</span></div>
+      <div class="brand"><span data-en>MIHZAM</span><span data-ar>المحزم المليان</span></div>
       <a class="os-btn" id="osBtn" href="login.html?lang=en" aria-label="MIHZAM OS">MIHZAM OS</a>
       <button class="lang" id="langBtn" type="button" aria-label="Switch language">العربية</button>
     </header>
@@ -543,9 +544,9 @@ body.ar .early-form{
           investors make disciplined, structured, and data-informed decisions.
         </span>
         <span data-ar>
-          تبني مِحْزَم نظام تشغيل استثماري ذكي يساعد المستثمرين على اتخاذ قرارات منضبطة،
-          منظمة، ومدعومة بالبيانات.
-        </span>
+  يبني المحزم المليان نظام تشغيل استثماري ذكي يساعد المستثمرين على اتخاذ قرارات منضبطة،
+  منظمة، ومدعومة بالبيانات.
+</span>
       </p>
 
       <div class="actions">
@@ -653,7 +654,7 @@ body.ar .early-form{
 
       <h2>
         <span data-en>Be among the first to experience MIHZAM.</span>
-        <span data-ar>كن من أوائل من يختبرون مِحْزَم.</span>
+        <span data-ar>كن من أوائل من يختبرون المحزم المليان.</span>
       </h2>
 
       <p>
@@ -685,7 +686,7 @@ oninput="this.setCustomValidity('')"
     </form>
     <div class="early-message" id="earlyMessage" aria-live="polite">
   <span data-en>You're on the MIHZAM early access list.</span>
-  <span data-ar>تم تسجيلك في قائمة الوصول المبكر لـ MIHZAM.</span>
+  <span data-ar>تم تسجيلك في قائمة الوصول المبكر للمحزم المليان.</span>
 </div>
 
   </div>
@@ -723,8 +724,8 @@ oninput="this.setCustomValidity('')"
     </main>
 
     <footer>
-      <span><span data-en>© 2026 MIHZAM. All rights reserved.</span><span data-ar>© 2026 مِحْزَم. جميع الحقوق محفوظة.</span></span>
-      <span><span data-en>MIHZAM OS — Coming Soon.</span><span data-ar>نظام مِحْزَم التشغيلي — قريبًا.</span></span>
+      <span><span data-en>© 2026 MIHZAM. All rights reserved.</span><span data-ar>© 2026 المحزم المليان. جميع الحقوق محفوظة.</span></span>
+      <span><span data-en>MIHZAM OS — Coming Soon.</span><span data-ar>نظام المحزم المليان التشغيلي — قريبًا.</span></span>
       <a class="social-x" href="https://x.com/MIHZAM12" target="_blank" rel="noopener noreferrer">X · @MIHZAM12</a>
     </footer>
   </div>
@@ -835,11 +836,23 @@ try {
   console.error('Confirmation email failed:', emailError);
 }
   earlyMessage.textContent = language === 'ar'
-    ? 'تم استلام طلبك للانضمام إلى قائمة الوصول المبكر لـ MIHZAM.'
+    ? 'تم استلام طلبك للانضمام إلى قائمة الوصول المبكر للمحزم المليان.'
     : 'Your MIHZAM early access request has been received.';
 
+  
   earlyMessage.classList.add('show');
-  earlyForm.reset();
+
+  
+
+// Google Analytics — successful Early Access signup
+if (typeof gtag === 'function') {
+  gtag('event', 'early_access_signup', {
+    signup_source: 'website',
+    language: language
+  });
+}
+
+earlyForm.reset();
 });
   </script>
 </body>
